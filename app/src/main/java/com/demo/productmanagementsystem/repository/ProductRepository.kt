@@ -3,9 +3,8 @@ package com.demo.productmanagementsystem.repository
 import androidx.lifecycle.LiveData
 import com.demo.productmanagementsystem.data.Product
 import com.demo.productmanagementsystem.data.ProductDAO
-import javax.inject.Inject
 
-class ProductRepository (val productDao: ProductDAO) {
+class ProductRepository(val productDao: ProductDAO) {
 
     suspend fun insertProduct(product: Product) {
         productDao.insertProduct(product)
@@ -17,5 +16,9 @@ class ProductRepository (val productDao: ProductDAO) {
 
     suspend fun deleteProduct(product: Product) {
         productDao.deleteProuct(product)
+    }
+
+    suspend fun updateProduct(product: Product){
+        productDao.updateProduct(product)
     }
 }

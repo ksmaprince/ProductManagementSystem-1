@@ -3,6 +3,7 @@ package com.demo.productmanagementsystem.data
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "product_table")
 data class Product(
@@ -14,4 +15,4 @@ data class Product(
     val origin:String,
     @ColumnInfo(name = "product_price")
     val price: String
-)
+):Serializable

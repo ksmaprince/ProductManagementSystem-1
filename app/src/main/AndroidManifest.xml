@@ -14,10 +14,13 @@
         android:theme="@style/Theme.ProductManagementSystem"
         tools:targetApi="31">
         <activity
-            android:name=".AddProductActivity"
+            android:name=".ui.UpdateProductActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.AddProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,16 +1,12 @@
-package com.demo.productmanagementsystem
+package com.demo.productmanagementsystem.ui
 
 import android.os.Bundle
-import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.demo.productmanagementsystem.adapters.ProductAdapter
 import com.demo.productmanagementsystem.data.Product
-import com.demo.productmanagementsystem.data.ProductDB
 import com.demo.productmanagementsystem.databinding.ActivityMainBinding
-import com.demo.productmanagementsystem.repository.ProductRepository
 import com.demo.productmanagementsystem.viewmodel.ProductViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -19,9 +15,12 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
     //private val viewModel: ProductViewModel by viewModels()
-    @Inject lateinit var viewModel: ProductViewModel
-    @Inject lateinit var adapter: ProductAdapter
+    @Inject
+    lateinit var viewModel: ProductViewModel
+    @Inject
+    lateinit var adapter: ProductAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -40,8 +39,8 @@ class MainActivity : AppCompatActivity() {
 
         adapter.setOnImageClickListener(object : ProductAdapter.OnImageClickListener {
             override fun onImageClick(product: Product) {
-                Toast.makeText(this@MainActivity, "${product.title} is clicked", Toast.LENGTH_LONG)
-                    .show()
+                viewModel.setProduct(product)
+                startActivity(UpdateProductActivity.getIntent(this@MainActivity, product))
             }
         })
 

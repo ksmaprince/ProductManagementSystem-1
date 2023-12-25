@@ -1,4 +1,4 @@
-package com.demo.productmanagementsystem
+package com.demo.productmanagementsystem.ui
 
 import android.content.Context
 import android.content.Intent
@@ -32,6 +32,7 @@ class AddProductActivity : AppCompatActivity() {
             val price = binding.edtProductPrice.text.toString()
 
             viewModel.saveProduct(Product(0, name, origin, price))
+            finish()
         }
 
     }
